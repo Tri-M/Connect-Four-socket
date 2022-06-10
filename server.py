@@ -52,7 +52,7 @@ while True:
 def winning(counter, board):
     if(counter >= 7):
         if(p1 == check_play(board)):
-            print("Winner:", p1)
+            print(colored(220,50,60,"Winner:", p1))
             conn1.send(b"$end")
             conn2.send(b"$end")
             if(conn1.recv(4096).decode('UTF-8') == "$success" and conn2.recv(4096).decode('UTF-8') == "$success"):
@@ -65,7 +65,7 @@ def winning(counter, board):
                        printBoard(board).encode('UTF-8') + b"\nCongrats! You are the winner!\n")
             return 1
         elif(p2 == check_play(board)):
-            print("\nWinner:", p2)
+            print(colored(35, 219, 29,"\nWinner:", p2))
             conn1.send(b"$end")
             conn2.send(b"$end")
             if(conn1.recv(4096).decode('UTF-8') == "$success" and conn2.recv(4096).decode('UTF-8') == "$success"):

@@ -88,8 +88,8 @@ def startConnectFour():
         if counter % 2 == 1:
             conn1.send(b"$p1")
             conn2.send(b"$p1")
-            conn1.send(printBoard(board).encode('UTF-8'))
-            conn2.send(printBoard(board).encode('UTF-8'))
+            conn1.send(printBoard(board).encode("UTF-8"))
+            conn2.send(printBoard(board).encode("UTF-8"))
             move1 = conn1.recv(4096).decode('UTF-8')
             play(board, int(move1), p1)
             counter += 1

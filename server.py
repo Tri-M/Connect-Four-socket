@@ -11,6 +11,7 @@ port2 = 12346
 serv1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 serv2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+print("Server running")
 serv1.bind((host, port1))
 serv1.listen(5)
 
@@ -19,6 +20,9 @@ serv2.listen(5)
 
 client1_status = False
 client2_status = False
+
+def colored(r, g, b, text):
+    return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
 
 while True:
     conn1, addr = serv1.accept()
@@ -56,9 +60,9 @@ def winning(counter, board):
             else:
                 exit(1)
             conn2.send(b"Board:\n\n" +
-                       printBoard(board).encode('UTF-8') + b"\nYou lose.\n")
+                       printBoard(board).encode('UTF-8') + b"\nOops! Sorry, you lost! :/\n")
             conn1.send(b"\nBoard:\n\n" +
-                       printBoard(board).encode('UTF-8') + b"\nYou win!\n")
+                       printBoard(board).encode('UTF-8') + b"\nCongrats! You are the winner!\n")
             return 1
         elif(p2 == check_play(board)):
             print("\nWinner:", p2)
@@ -69,14 +73,14 @@ def winning(counter, board):
             else:
                 exit(1)
             conn2.send(b"\nBoard:\n\n" +
-                       printBoard(board).encode('UTF-8')+b"\nYou win!\n")
+                       printBoard(board).encode('UTF-8')+b"\nCongrats! You are the winner!\n")
             conn1.send(b"Board:\n\n" +
-                       printBoard(board).encode('UTF-8')+b"\nYou lose.\n")
+                       printBoard(board).encode('UTF-8')+b"\nOops! Sorry, you lost! :/ \n")
             return 1
     return 0
 
 
-def startGame():
+def startConnectFour():
     counter = 1
     board = [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]]
@@ -121,6 +125,6 @@ def startGame():
                 break
 
 
-startGame()
+startConnectFour()
 
 end = input("Press the enter key to close")

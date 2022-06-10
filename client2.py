@@ -1,9 +1,16 @@
 import socket
 
-host = 'localhost'
-port = 65433
+host = '127.0.0.1'
+port = 12346
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((host, port))
+
+def colored(r, g, b, text):
+    return "\033[38;2;{};{};{}m{} \033[38;2;255;255;255m".format(r, g, b, text)
+
+print(colored(255,0,0,"WELCOME TO CONNECT FOUR GAME !"))
+print("\n-------------------------------")
+print("\nProject by 20PW31 & 20PW39")
 
 name = input("\nEnter your playing character: ")[0].encode('UTF-8')
 

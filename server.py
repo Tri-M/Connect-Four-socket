@@ -3,7 +3,7 @@ from board import play
 from checkDir import check_play
 from display import printBoard
 
-host = 'localhost'
+host = '127.0.0.1'
 
 port1 = 12345        
 port2 = 12346      

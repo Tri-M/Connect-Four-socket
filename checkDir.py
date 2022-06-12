@@ -34,7 +34,7 @@ def checkDiagPositive(board):
                     return x
 
 
-def callCheck(board):
+def checkGame(board):
     if checkDiagPositive(board) != None:
         return checkDiagPositive(board)
     if checkHorizontal(board) != None:

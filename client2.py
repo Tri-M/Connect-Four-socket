@@ -19,7 +19,7 @@ def yourTurn():
     from_server = client.recv(4096)
     print(from_server.decode('UTF-8'))
     while True:
-        move = input("Enter column number to drop coin: ")
+        move = input(colored(90,50,250,"Enter column number to drop coin and include character : "))
         if(int(move) >= 1 and int(move) <= 7):
             client.send(move.encode("UTF-8"))
             break
@@ -27,7 +27,7 @@ def yourTurn():
 
 
 def oppTurn():
-    print("\nOpponent's turn.\nBoard:\n")
+    print(colored(200,78,0,"\nOpponent's turn.\nBoard:\n"))
     from_server = client.recv(4096)
     print(from_server.decode('UTF-8'))
     client.send(b"$success")

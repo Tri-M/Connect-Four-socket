@@ -61,7 +61,7 @@ def checkForWin(counter, board):
                 pass
             else:
                 exit(1)
-            conn2.send(b"Board:\n\n" +
+            conn2.send(b"The Board:\n\n" +
                        printGame(board).encode('UTF-8') + b"\nYou lose.\n")
             conn1.send(b"\nBoard:\n\n" +
                        printGame(board).encode('UTF-8') + b"\nYou win!\n")
